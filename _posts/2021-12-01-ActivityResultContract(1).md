@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "[Android, Kotlin] ActivityResultContract API"
+title:  "[Android, Kotlin] ActivityResultContract API (1)"
 ---
 
 ### ActivityResultContract API란
