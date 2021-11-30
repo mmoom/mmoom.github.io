@@ -16,28 +16,31 @@ Activity가 생성될 때 마다 콜백을 무조건 등록해야함
 //콜백 추가로 공부하기
 
 
-```
-val getContent = registerForActivityResult(GetContent()) { uri: Uri? ->
-    //결과 Uri 처리
-}
-```
-
 ### registerForActivityResult()
 > ActivityResultContract, ActivityResultCallback을 가져와서
 다른 Activity을 실행하는 데 사용할 ActivityResultLauncher을 반환함
-
-1) ActivityResultContract : 결과를 생성하는 데 필요한 (1)입력 유형과, 결과의 (2)출력 유형을 정의함.
-사진 촬영, 권한 요청 과 같은 기본 인텐트 작업의 기본 계약을 제공함.
-자체 맞춤 계약을 만들 수도 있음.
-
-2) ActivityResultCallback : ActivityResultContract에 정의된 '출력 유형'의 객체를 가져오는 
-onActivityResult() 메서드가 포함된 인터페이스이다.
+* ActivityResultContract : 결과를 생성하는 데 필요한 (1)입력 형태와, (2)결과의 출력 형태를 정의함.
 
 
-여러 Activity 결과 호출이 있다면
-registerForActivityResult()을 여러번 호출하여
-여러개의 ActivityResultLauncher 인스턴스를 등록할 수 있다.
+### ActivityResultContract 사용하기
+1) 콜백을 선언한다
+```
+val getContent = registerForActivityResult(GetContent()) { uri: Uri? -> 
+    //결과 Uri 처리
+}
+```
+registerForActivityResult()는 콜백만 등록하고, Activity을 실행하거나 결과 요청은 하지 않음.
+(등록만 한다)
 
+
+2) launch()를 사용하여 데이터를 받아올 Activity을 실행한다
+```
+btn.setOnClickListener {
+  getContent.launch("image/*")
+}
+```
+입력이 있으면? launch는 ActivityResultContract 유형과 일치하는 입력을 가져온다.
+launch()을 호출하면 결과를 생성하는 프로세스가 시작된다.
 
 
 
