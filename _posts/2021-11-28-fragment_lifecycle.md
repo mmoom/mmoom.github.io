@@ -22,6 +22,9 @@ Activity, Fragment의 콜백 이벤트에 매핑된다.
 Lifecycle객체가 추적한 구성요소의 현재상태이다.
 
 
+### Fragment, Activity 생명주기 관계
+Fragment는 Activity안에서 일어나는 동작, 사용자 인터페이스를 나타낸다.
+Fragment의 생명주기는 Attach되는 Activity의 생명주기에 영향을 받는다.
 
 
 ### Fragment Lifecycle
